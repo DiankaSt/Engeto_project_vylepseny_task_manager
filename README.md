@@ -30,6 +30,7 @@ source .venv/bin/activate     (Linux/macOS)
 .venv\Scripts\activate       (Windows)
 
 pip install mysql-connector-python pytest
+
 Spuštění aplikace
 Hlavní skript spustíte příkazem:
 
