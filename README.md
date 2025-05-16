@@ -25,6 +25,7 @@ CREATE TABLE spravce_ukolu.ukoly (
 Instalace závislostí
 Vytvořte si virtuální prostředí a nainstalujte požadované knihovny:
 python -m venv .venv
+
 source .venv/bin/activate     (Linux/macOS)
 .venv\Scripts\activate       (Windows)
 
@@ -36,7 +37,9 @@ python vylepseny_task_manager.py
 
 Aplikace zobrazí menu a umožní přidat, zobrazit, aktualizovat nebo odstranit úkoly.
 Automatizované testy
-Testy najdete v souboru test_vylepseny_task_manager.py. Spuštění testů:
+Testy najdete v souboru test_vylepseny_task_manager.py. 
+
+Spuštění testů:
 
 pytest test_vylepseny_task_manager.py
 
