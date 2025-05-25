@@ -3,8 +3,8 @@ Popis projektu
 Tento projekt rozšiřuje správce úkolů o připojení k MySQL databázi, ukládání úkolů a podporu CRUD operací (Create, Read, Update, Delete). 
 
 Projekt obsahuje dvě hlavní části:
-1. vylepseny_task_manager.py: hlavní aplikace pro správu úkolů
-2. test_vylepseny_task_manager.py: automatizované testy pomocí pytest a MySQL
+1. vylepseny_task_manager_update.py: hlavní aplikace pro správu úkolů
+2. test_vylepseny_task_manager_update.py: automatizované testy pomocí pytest a MySQL
    
 Použité technologie
 - Python 3.10+
@@ -32,16 +32,28 @@ source .venv/bin/activate     (Linux/macOS)
 pip install mysql-connector-python pytest
 
 Spuštění aplikace
+
 Hlavní skript spustíte příkazem:
 
-python vylepseny_task_manager.py
+python vylepseny_task_manager_update.py
 
-Aplikace zobrazí menu a umožní přidat, zobrazit, aktualizovat nebo odstranit úkoly.
+Zobrazí se hlavní menu aplikace pro správu úkolů a umožní přidat, zobrazit, aktualizovat nebo odstranit úkoly.
+
 Automatizované testy
-Testy najdete v souboru test_vylepseny_task_manager.py. 
+Testy najdete v souboru test_vylepseny_task_manager_update.py. 
 
 Spuštění testů:
 
-pytest test_vylepseny_task_manager.py
+pytest test_vylepseny_task_manager_update.py
 
-Testy pracují s testovací databází a po testech automaticky odstraňují testovací data.
+Pro každý test se používá testovací databáze spravce_ukolu_test.
+
+Testy zahrnují:
+
+přidání úkolu (pozitivní i negativní případ),
+
+aktualizaci úkolu,
+
+odstranění úkolu.
+
+Tabulka se automaticky čistí před a po každém testu.
