@@ -1,6 +1,7 @@
 from datetime import datetime
 from mysql.connector import connect, Error
 
+
 def pripojeni_db():
     try:
         return connect(
