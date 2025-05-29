@@ -12,7 +12,7 @@ Použité technologie
 - Knihovna mysql-connector-python
 - pytest
   
-Struktura databáze
+Struktura databáze např. produkční
 V MySQL Workbench se vytvoří databázi a tabulku ukoly s následující strukturou:
 CREATE DATABASE spravce_ukolu;
 CREATE TABLE spravce_ukolu.ukoly (
@@ -22,6 +22,13 @@ CREATE TABLE spravce_ukolu.ukoly (
     stav ENUM('nezahájeno', 'hotovo', 'probíhá') NOT NULL DEFAULT 'nezahájeno',
     datum_vytvoreni DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+Struktura databáze např. testovací
+CREATE DATABASE IF NOT EXISTS spravce_ukolu_test;
+
+Poznámka: Před spuštěním testů je potřeba mít vytvořenou testovací databázi spravce_ukolu_test. 
+Tabulka ukoly se v testech vytváří automaticky pomocí SQL dotazu CREATE TABLE IF NOT EXISTS.
+
 Instalace závislostí
 Vytvoří se virtuální prostředí a nainstalují se požadované knihovny:
 python -m venv .venv
