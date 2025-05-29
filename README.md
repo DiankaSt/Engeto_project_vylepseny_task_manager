@@ -14,6 +14,7 @@ Použité technologie
   
 Struktura databáze např. produkční
 V MySQL Workbench se vytvoří databázi a tabulku ukoly s následující strukturou:
+
 CREATE DATABASE spravce_ukolu;
 CREATE TABLE spravce_ukolu.ukoly (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,6 +25,7 @@ CREATE TABLE spravce_ukolu.ukoly (
 );
 
 Struktura databáze např. testovací
+
 CREATE DATABASE IF NOT EXISTS spravce_ukolu_test;
 
 Poznámka: Před spuštěním testů je potřeba mít vytvořenou testovací databázi spravce_ukolu_test. 
