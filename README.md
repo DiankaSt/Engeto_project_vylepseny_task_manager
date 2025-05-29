@@ -13,7 +13,7 @@ Použité technologie
 - pytest
   
 Struktura databáze
-V MySQL Workbench si vytvořte databázi a tabulku ukoly s následující strukturou:
+V MySQL Workbench se vytvoří databázi a tabulku ukoly s následující strukturou:
 CREATE DATABASE spravce_ukolu;
 CREATE TABLE spravce_ukolu.ukoly (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,7 +23,7 @@ CREATE TABLE spravce_ukolu.ukoly (
     datum_vytvoreni DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 Instalace závislostí
-Vytvořte si virtuální prostředí a nainstalujte požadované knihovny:
+Vytvoří se virtuální prostředí a nainstalují se požadované knihovny:
 python -m venv .venv
 
 source .venv/bin/activate     (Linux/macOS)
