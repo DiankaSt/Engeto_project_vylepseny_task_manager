@@ -71,6 +71,7 @@ def test_aktualizovat_ukol_pozitivni():
         vysledek = cursor.fetchone()[0]
     con.close()
     assert vysledek == "hotovo"
+    
 
 def test_aktualizovat_ukol_negativni():
     con = pripojeni_test_db()
