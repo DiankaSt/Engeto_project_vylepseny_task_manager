@@ -3,8 +3,8 @@ Popis projektu
 Tento projekt rozšiřuje správce úkolů o připojení k MySQL databázi, ukládání úkolů a podporu CRUD operací (Create, Read, Update, Delete). 
 
 Projekt obsahuje dvě hlavní části:
-1. vylepseny_task_manager_update.py: hlavní aplikace pro správu úkolů
-2. test_vylepseny_task_manager_update.py: automatizované testy pomocí pytest a MySQL
+1. vylepseny_task_manager.py: hlavní aplikace pro správu úkolů
+2. test_vylepseny_task_manager.py: automatizované testy pomocí pytest a MySQL
    
 Použité technologie
 - Python 3.10+
@@ -49,20 +49,33 @@ python vylepseny_task_manager_update.py
 Zobrazí se hlavní menu aplikace pro správu úkolů a umožní přidat, zobrazit, aktualizovat nebo odstranit úkoly.
 
 Automatizované testy
-Testy najdete v souboru test_vylepseny_task_manager_update.py. 
 
-Spuštění testů:
+Testy najdete v souboru test_vylepseny_task_manager.py. 
+
+Testují přímo funkce z hlavního programu, jako například:
+
+pridat_ukol_do_db() – přidání úkolu do databáze,
+
+aktualizovat_ukol_stav() – změna stavu úkolu,
+
+odstranit_ukol_z_db() – smazání úkolu.
+
+Každá funkce má:
+
+pozitivní test (ověřuje správné chování při platných vstupech),
+
+negativní test (ověřuje chování při neplatných vstupech nebo neexistujících ID).
+
+Spuštění testů
+
+Před spuštěním testů se ujisti, že:
+
+máš vytvořenou testovací databázi spravce_ukolu_test,
+
+máš vytvořenou tabulku ukoly (vytváří se automaticky v testu pomocí CREATE TABLE IF NOT EXISTS).
+
+Testy spustíš příkazem:
 
 pytest test_vylepseny_task_manager_update.py
 
-Pro každý test se používá testovací databáze spravce_ukolu_test.
 
-Testy zahrnují:
-
-přidání úkolu (pozitivní i negativní případ),
-
-aktualizaci úkolu,
-
-odstranění úkolu.
-
-Tabulka se automaticky čistí před a po každém testu.
