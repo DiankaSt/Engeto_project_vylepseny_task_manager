@@ -8,11 +8,12 @@ Tento projekt je jednoduchý správce úkolů v Pythonu s připojením na MySQL 
 
 Hlavní soubory
 
-| Soubor                        | Popis                                      |
-|----------------------------------------------------------------------------|
-| vylepseny_task_manager.py     | Hlavní aplikace pro správu úkolů           |
-| test_vylepseny_task_manager.py| Automatizované testy                       |
-| requirements.txt              | Seznam knihoven potřebných k běhu projektu |
+| Soubor                     | Popis                         |
+|----------------------------|-------------------------------|
+| vylepseny_task_manager.py  | Hlavní aplikace pro správu úkolů |
+| test_vylepseny_task_manager.py | Automatizované testy         |
+| requirements.txt           | Seznam knihoven potřebných k běhu projektu |
+
 
 
 
