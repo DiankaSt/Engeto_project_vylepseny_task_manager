@@ -41,8 +41,8 @@ CREATE DATABASE spravce_ukolu;
 
 Testovací databáze: spravce_ukolu_test
 
-- Používá se výhradně při spouštění automatizovaných testů (`pytest`).
-- Tabulka `ukoly` se automaticky vytvoří a vyčistí před každým testem pro zajištění izolovaného testovacího prostředí.
+- Používá se výhradně při spouštění automatizovaných testů (pytest).
+- Tabulka ukoly se automaticky vytvoří a vyčistí před každým testem pro zajištění izolovaného testovacího prostředí.
 
 CREATE DATABASE IF NOT EXISTS spravce_ukolu_test;
 
