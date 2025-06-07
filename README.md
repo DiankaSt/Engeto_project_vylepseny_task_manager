@@ -82,7 +82,7 @@ pip install -r requirements.txt
 ### Spuštění hlavní aplikace
 
 
-python vylepseny_task_manager.py
+`python vylepseny_task_manager.py`
 
 
 Zobrazí se hlavní menu, kde je volba:
@@ -100,7 +100,7 @@ Zobrazí se hlavní menu, kde je volba:
 Spustění příkazem:
 
 bash
-pytest test_vylepseny_task_manager.py
+`pytest test_vylepseny_task_manager.py`
 
 
 ### Testované funkce:
