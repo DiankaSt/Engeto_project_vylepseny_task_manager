@@ -1,12 +1,12 @@
-Vylepšený Task Manager
+# Vylepšený Task Manager
 
-Popis projektu
+## Popis projektu
 
 Tento projekt je jednoduchý správce úkolů v Pythonu s připojením na MySQL databázi. Podporuje klasické operace CRUD (vytvoření, čtení, aktualizace, mazání). Obsahuje také automatizované testy pomocí knihovny pytest.
 
 
 
-Hlavní soubory
+### Hlavní soubory
 
 | Soubor                     | Popis                         |
 |----------------------------|-------------------------------|
@@ -17,7 +17,7 @@ Hlavní soubory
 
 
 
-Použité technologie
+### Použité technologie
 
 - Python 3.10+
 - MySQL (doporučeno: MySQL Workbench)
@@ -27,7 +27,7 @@ Použité technologie
 
 
 
-Databáze
+### Databáze
 
 Projekt používá dvě samostatné databáze:
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS ukoly (
 
 
 
-Instalace
+### Instalace
 
 1. Vytvoření virtuálního prostředí:
 bash
@@ -79,7 +79,7 @@ pip install -r requirements.txt
 
 
 
-Spuštění hlavní aplikace
+### Spuštění hlavní aplikace
 
 
 python vylepseny_task_manager.py
@@ -95,7 +95,7 @@ Zobrazí se hlavní menu, kde je volba:
 
 
 
-Automatizované testy
+## Automatizované testy
 
 Spustění příkazem:
 
@@ -103,7 +103,7 @@ bash
 pytest test_vylepseny_task_manager.py
 
 
-Testované funkce:
+### Testované funkce:
 
 - pridat_ukol_do_db(): Testováno na pozitivní přidání úkolu a na chování při pokusu o vložení nevalidních dat (např. chybějící název).
 - aktualizovat_ukol(): Testováno na úspěšnou změnu stavu úkolu, pokus o aktualizaci neexistujícího úkolu a zadání neplatného stavu.
