@@ -65,17 +65,13 @@ bash
 python -m venv .venv
 
 
-2. Aktivace:
+1. Aktivace:
 - Windows:
   bash
   .venv\Scripts\activate
   
-- macOS/Linux:
-  bash
-  source .venv/bin/activate
-  
 
-3. Insatalace závislostí:
+2. Insatalace závislostí:
 bash
 pip install -r requirements.txt
 
