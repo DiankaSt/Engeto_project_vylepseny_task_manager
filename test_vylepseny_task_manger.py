@@ -171,6 +171,7 @@ def test_odstranit_ukol_negativni_neexistujici_id(mock_zobrazit_ukoly, mocker, c
     # Doplňková kontrola, že úkol s daným ID skutečně neexistuje
     assert not ukol_existuje(con, 9999)
 
+
 def test_zobrazit_ukoly_vypisuje_pridany_ukol(capsys):
     """
     Testuje, že funkce zobrazit_ukoly vypíše správně přidaný úkol do konzole.
@@ -185,5 +186,4 @@ def test_zobrazit_ukoly_vypisuje_pridany_ukol(capsys):
     captured = capsys.readouterr()
     assert "Zobrazit test" in captured.out
     assert "Popis zobrazení" in captured.out
-
 
