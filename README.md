@@ -67,7 +67,7 @@ bash
 python -m venv .venv
 
 
-1. Aktivace:
+   Aktivace:
 - Windows:
   bash
   .venv\Scripts\activate
