@@ -109,6 +109,8 @@ pytest test_vylepseny_task_manager.py
 - aktualizovat_ukol(): Testováno na úspěšnou změnu stavu úkolu, pokus o aktualizaci neexistujícího úkolu a zadání neplatného stavu.
 - odstranit_ukol(): Testováno na úspěšné odstranění úkolu a pokus o odstranění neexistujícího úkolu.
 - ukol_existuje(): Tato pomocná funkce je implicitně testována v rámci ostatních testů.
+- zobrazit_ukoly(): Test ověřuje, že po přidání úkolu funkce skutečně vypíše jeho název a popis do konzole.
+  
 Každá testovaná funkce zahrnuje jak pozitivní testy (ověřující správné chování), tak negativní testy (ověřující robustnost a správné ošetření chybných vstupů). Testy využívají fixture pro automatické nastavení a vyčištění testovací databáze, což zajišťuje jejich spolehlivost a izolaci.
 
 
