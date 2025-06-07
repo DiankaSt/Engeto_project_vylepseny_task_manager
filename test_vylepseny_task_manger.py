@@ -89,7 +89,7 @@ def test_aktualizovat_ukol_negativni_neexistujici_id(mock_zobrazit_ukoly, mocker
     # Simulace uživatelského vstupu: neexistující ID úkolu
     mocker.patch('builtins.input', side_effect=['9999', 'hotovo'])
 
-    # Volání TVOJÍ funkce pro aktualizaci úkolu
+    # Volání funkce pro aktualizaci úkolu
     aktualizovat_ukol(con)
 
     # Zachycení výstupu do konzole a kontrola chybové zprávy
@@ -161,7 +161,7 @@ def test_odstranit_ukol_negativni_neexistujici_id(mock_zobrazit_ukoly, mocker, c
     # Simulace uživatelského vstupu: neexistující ID úkolu
     mocker.patch('builtins.input', side_effect=['9999'])
 
-    # Volání TVOJÍ funkce pro odstranění úkolu
+    # Volání funkce pro odstranění úkolu
     odstranit_ukol(con)
 
     # Zachycení výstupu a kontrola chybové zprávy
