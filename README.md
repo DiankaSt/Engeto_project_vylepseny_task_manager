@@ -23,6 +23,7 @@ Použité technologie
 - MySQL (doporučeno: MySQL Workbench)
 - mysql-connector-python
 - pytest
+- pytest-mock
 
 
 
@@ -77,7 +78,6 @@ pip install -r requirements.txt
 
 
 
-
 Spuštění hlavní aplikace
 
 
@@ -86,10 +86,11 @@ python vylepseny_task_manager.py
 
 Zobrazí se hlavní menu, kde je volba:
 
-- přidat úkol,
-- zobrazit aktivní úkoly,
-- aktualizovat stav úkolu,
-- odstranit úkol.
+1. Přidat úkol: Umožňuje zadat název a popis nového úkolu.
+2. Zobrazit úkoly: Vypíše seznam aktivních úkolů (nezahájeno, probíhá).
+3. Aktualizovat úkol: Umožňuje změnit stav existujícího úkolu na 'probíhá' nebo 'hotovo'.
+4. Odstranit úkol: Trvale smaže úkol z databáze.
+5. Ukončit: Ukončí aplikaci.
 
 
 
@@ -102,14 +103,12 @@ pytest test_vylepseny_task_manager.py
 
 
 Testované funkce:
-- pridat_ukol_do_db()
-- ukol_existuje()
-- aktualizace a mazání úkolů
 
-Každá funkce má:
-- pozitivní test – ověřuje, že vše probíhá správně
-- negativní test – ověřuje chování při chybných vstupech
-
+- pridat_ukol_do_db(): Testováno na pozitivní přidání úkolu a na chování při pokusu o vložení nevalidních dat (např. chybějící název).
+- aktualizovat_ukol(): Testováno na úspěšnou změnu stavu úkolu, pokus o aktualizaci neexistujícího úkolu a zadání neplatného stavu.
+- odstranit_ukol(): Testováno na úspěšné odstranění úkolu a pokus o odstranění neexistujícího úkolu.
+- ukol_existuje(): Tato pomocná funkce je implicitně testována v rámci ostatních testů.
+Každá testovaná funkce zahrnuje jak pozitivní testy (ověřující správné chování), tak negativní testy (ověřující robustnost a správné ošetření chybných vstupů). Testy využívají fixture pro automatické nastavení a vyčištění testovací databáze, což zajišťuje jejich spolehlivost a izolaci.
 
 
  Poznámky
