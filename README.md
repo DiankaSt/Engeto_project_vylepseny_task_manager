@@ -67,25 +67,26 @@ Odstranit úkol
 
 Ukončit aplikaci
 
-🧪 Spuštění testů
+Spuštění testů
 Testy ověřují funkce pro přidávání, aktualizaci a mazání úkolů v databázi.
 
 Spuštění:
 bash
 
 pytest test_vylepseny_task_manager.py
-✅ Testované funkce
+
+ Testované funkce
 pridat_ukol_do_db()
-✅ Test na úspěšné přidání úkolu
-❌ Pokus o nevalidní vložení bez názvu
+Test na úspěšné přidání úkolu
+ Pokus o nevalidní vložení bez názvu
 
 aktualizovat_stav_ukolu()
-✅ Test úspěšné změny stavu
-❌ Pokus o aktualizaci neexistujícího úkolu
+Test úspěšné změny stavu
+Pokus o aktualizaci neexistujícího úkolu
 
 odstranit_ukol_z_db()
-✅ Test úspěšného odstranění úkolu
-❌ Pokus o odstranění neexistujícího úkolu
+Test úspěšného odstranění úkolu
+Pokus o odstranění neexistujícího úkolu
 
 ukol_existuje()
  Nepřímo testováno v rámci ostatních funkcí
