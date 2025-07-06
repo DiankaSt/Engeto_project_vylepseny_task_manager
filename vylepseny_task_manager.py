@@ -1,7 +1,7 @@
 from datetime import datetime
 from mysql.connector import connect, Error
 
-# Připojení k produkční databázi
+
 def pripojeni_db():
     try:
         return connect(
@@ -14,20 +14,6 @@ def pripojeni_db():
         print("Chyba při připojení k databázi:", e)
         return None
 
-# Připojení k testovací databázi (používá se v testech)
-def pripojeni_test_db():
-    try:
-        return connect(
-            host="localhost",
-            user="root",
-            password="1111",
-            database="spravce_ukolu_test"
-        )
-    except Error as e:
-        print("Chyba při připojení k testovací databázi:", e)
-        return None
-
-# Vytvoření tabulky (používá se v obou databázích)
 def vytvoreni_tabulky(connection):
     with connection.cursor() as cursor:
         cursor.execute("""
@@ -41,28 +27,16 @@ def vytvoreni_tabulky(connection):
         """)
         connection.commit()
 
-# Vymazání všech záznamů – pro testy
-def vycisti_tabulku():
-    con = pripojeni_test_db()
-    if con:
-        with con.cursor() as cursor:
-            cursor.execute("DELETE FROM ukoly")
-            con.commit()
-        con.close()
-
-# Ověření existence úkolu podle ID
 def ukol_existuje(connection, id_ukolu):
     with connection.cursor() as cursor:
         cursor.execute("SELECT id FROM ukoly WHERE id = %s", (id_ukolu,))
         return cursor.fetchone() is not None
 
-# Přidání úkolu do databáze – využívá se i v testech
 def pridat_ukol_do_db(connection, nazev, popis):
     with connection.cursor() as cursor:
         cursor.execute("INSERT INTO ukoly (nazev, popis) VALUES (%s, %s)", (nazev, popis))
         connection.commit()
 
-# Interaktivní přidání úkolu (přes input)
 def pridat_ukol(connection):
     while True:
         nazev = input("Zadejte název úkolu: ").strip()
@@ -81,7 +55,6 @@ def pridat_ukol(connection):
             print("Chyba při přidávání úkolu:", e)
             break
 
-# Výpis aktivních úkolů
 def zobrazit_ukoly(connection):
     with connection.cursor() as cursor:
         cursor.execute("SELECT id, nazev, popis, stav FROM ukoly WHERE stav IN ('nezahájeno', 'probíhá')")
@@ -93,7 +66,6 @@ def zobrazit_ukoly(connection):
             for u in ukoly:
                 print(f"ID: {u[0]}, Název: {u[1]}, Popis: {u[2]}, Stav: {u[3]}")
 
-# Změna stavu úkolu
 def aktualizovat_ukol(connection):
     zobrazit_ukoly(connection)
     try:
@@ -114,7 +86,6 @@ def aktualizovat_ukol(connection):
     except Error as e:
         print("Chyba při aktualizaci:", e)
 
-# Odstranění úkolu
 def odstranit_ukol(connection):
     zobrazit_ukoly(connection)
     try:
@@ -131,7 +102,6 @@ def odstranit_ukol(connection):
     except Error as e:
         print("Chyba při odstranění:", e)
 
-# Hlavní menu aplikace
 def hlavni_menu(connection):
     while True:
         print("\nSprávce úkolů - Hlavní menu")
@@ -156,13 +126,20 @@ def hlavni_menu(connection):
         else:
             print("Neplatná volba.")
 
-# Spuštění aplikace
+def aktualizovat_stav_ukolu(connection, id_ukolu, novy_stav):
+    with connection.cursor() as cursor:
+        cursor.execute("UPDATE ukoly SET stav = %s WHERE id = %s", (novy_stav, id_ukolu))
+        connection.commit()
+
+def odstranit_ukol_z_db(connection, id_ukolu):
+    with connection.cursor() as cursor:
+        cursor.execute("DELETE FROM ukoly WHERE id = %s", (id_ukolu,))
+        connection.commit()
+
+
 if __name__ == "__main__":
     conn = pripojeni_db()
     if conn:
         vytvoreni_tabulky(conn)
         hlavni_menu(conn)
         conn.close()
-
-
-
