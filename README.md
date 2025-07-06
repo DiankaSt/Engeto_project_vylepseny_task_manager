@@ -1,53 +1,45 @@
 # Vylepšený Task Manager
 
-## Popis projektu
+##  Popis projektu
 
-Tento projekt je jednoduchý správce úkolů v Pythonu s připojením na MySQL databázi. Podporuje klasické operace CRUD (vytvoření, čtení, aktualizace, mazání). Obsahuje také automatizované testy pomocí knihovny pytest.
+Tento projekt je jednoduchý správce úkolů napsaný v jazyce Python s připojením na databázi MySQL. Podporuje operace CRUD – vytvoření, čtení, aktualizaci a mazání úkolů.
 
+Součástí projektu jsou také automatizované testy pomocí knihovny `pytest`, které ověřují správnou funkčnost základních databázových operací.
 
+---
 
-### Hlavní soubory
+## Struktura souborů
 
-| Soubor                     | Popis                         |
-|----------------------------|-------------------------------|
-| vylepseny_task_manager.py  | Hlavní aplikace pro správu úkolů |
-| test_vylepseny_task_manager.py | Automatizované testy         |
-| requirements.txt           | Seznam knihoven potřebných k běhu projektu |
+| Soubor                        | Popis                                      |
+|------------------------------|---------------------------------------------|
+| `vylepseny_task_manager.py`  | Hlavní aplikace pro správu úkolů (konzole)  |
+| `test_vylepseny_task_manager.py` | Automatizované testy pomocí pytest         |
+| `requirements.txt`           | Seznam potřebných Python balíčků            |
 
+---
 
-
-
-### Použité technologie
+## Použité technologie
 
 - Python 3.10+
-- MySQL (doporučeno: MySQL Workbench)
-- mysql-connector-python
-- pytest
-- pytest-mock
+- MySQL (např. pomocí MySQL Workbench)
+- `mysql-connector-python`
+- `pytest`
 
+---
 
+##  Databáze
 
-### Databáze
+Projekt pracuje s jedinou databází:
 
-Projekt používá dvě samostatné databáze:
+### Databáze: `spravce_ukolu`
 
-Produkční databáze: spravce_ukolu
-- Používá se při spuštění aplikace vylepseny_task_manager.py
-- Vytváří se v ní tabulka ukoly automaticky při prvním spuštění
+- Používá se jak pro hlavní aplikaci, tak pro běh testů.
+- Tabulka `ukoly` se vytvoří automaticky při spuštění aplikace nebo testů.
 
-
+```sql
 CREATE DATABASE spravce_ukolu;
 
-
-Testovací databáze: spravce_ukolu_test
-
-- Používá se výhradně při spouštění automatizovaných testů (pytest).
-- Tabulka ukoly se automaticky vytvoří a vyčistí před každým testem pro zajištění izolovaného testovacího prostředí.
-
-CREATE DATABASE IF NOT EXISTS spravce_ukolu_test;
-
-
-Struktura tabulky ukoly:
+### Struktura tabulky ukoly:
 
 CREATE TABLE IF NOT EXISTS ukoly (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -57,66 +49,43 @@ CREATE TABLE IF NOT EXISTS ukoly (
     datum_vytvoreni DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-
-
-
-### Instalace
-
-1. Vytvoření virtuálního prostředí:
+### Spuštění aplikace
 bash
-python -m venv .venv
 
+python vylepseny_task_manager.py
 
-   Aktivace:
-- Windows:
-  bash
-  .venv\Scripts\activate
-  
+Po spuštění se zobrazí hlavní menu:
 
-2. Insatalace závislostí:
+Přidat úkol
+
+Zobrazit úkoly
+
+Aktualizovat úkol
+
+Odstranit úkol
+
+Ukončit aplikaci
+
+###  Spuštění testů
+Testy ověřují funkce pro přidávání, aktualizaci a mazání úkolů v databázi.
+
+Spusť testy pomocí příkazu:
 bash
+pytest test_vylepseny_task_manager.py
+
+### Testované funkce
+Funkce:
+
+pridat_ukol_do_db()	Test na úspěšné přidání úkolu i pokus o nevalidní vložení (bez názvu).
+aktualizovat_stav_ukolu()	Test úspěšné změny stavu i pokus o aktualizaci neexistujícího úkolu.
+odstranit_ukol_z_db()	Test úspěšného i neexistujícího odstranění úkolu.
+ukol_existuje()	Nepřímo testováno v rámci ostatních funkcí.
+
+Testy jsou izolované – při každém běhu se tabulka ukoly smaže (DELETE FROM ukoly), což zajišťuje konzistentní prostředí pro každý test.
+
+### Requirements
+
 pip install -r requirements.txt
 
-
-
-### Spuštění hlavní aplikace
-
-
-`python vylepseny_task_manager.py`
-
-
-Zobrazí se hlavní menu, kde je volba:
-
-1. Přidat úkol: Umožňuje zadat název a popis nového úkolu.
-2. Zobrazit úkoly: Vypíše seznam aktivních úkolů (nezahájeno, probíhá).
-3. Aktualizovat úkol: Umožňuje změnit stav existujícího úkolu na 'probíhá' nebo 'hotovo'.
-4. Odstranit úkol: Trvale smaže úkol z databáze.
-5. Ukončit: Ukončí aplikaci.
-
-
-
-## Automatizované testy
-
-Spustění příkazem:
-
-bash
-`pytest test_vylepseny_task_manager.py`
-
-
-### Testované funkce:
-
-- pridat_ukol_do_db(): Testováno na pozitivní přidání úkolu a na chování při pokusu o vložení nevalidních dat (např. chybějící název).
-- aktualizovat_ukol(): Testováno na úspěšnou změnu stavu úkolu, pokus o aktualizaci neexistujícího úkolu a zadání neplatného stavu.
-- odstranit_ukol(): Testováno na úspěšné odstranění úkolu a pokus o odstranění neexistujícího úkolu.
-- ukol_existuje(): Tato pomocná funkce je implicitně testována v rámci ostatních testů.
-- zobrazit_ukoly(): Test ověřuje, že po přidání úkolu funkce skutečně vypíše jeho název a popis do konzole.
-  
-Každá testovaná funkce zahrnuje jak pozitivní testy (ověřující správné chování), tak negativní testy (ověřující robustnost a správné ošetření chybných vstupů). Testy využívají fixture pro automatické nastavení a vyčištění testovací databáze, což zajišťuje jejich spolehlivost a izolaci.
-
-
- Poznámky
-
-- Před spuštěním testů se ujistíme, že máme vytvořenou testovací databázi spravce_ukolu_test.
-- Tabulka se vytváří automaticky (CREATE TABLE IF NOT EXISTS).
 
 
