@@ -41,8 +41,7 @@ Projekt pracuje s **jedinou databází**:
 CREATE DATABASE spravce_ukolu;
 Struktura tabulky ukoly:
 sql
-Zkopírovat
-Upravit
+
 CREATE TABLE IF NOT EXISTS ukoly (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nazev VARCHAR(255) NOT NULL,
