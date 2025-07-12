@@ -10,9 +10,9 @@ Součástí projektu jsou také automatizované testy pomocí knihovny `pytest`,
 
 ##  Struktura souborů
 
-| Soubor                          | Popis                                           |
+| Soubor                          | Popis                                            |
 |---------------------------------|--------------------------------------------------|
-| `vylepseny_task_manager.py`     | Hlavní aplikace pro správu úkolů (konzole)       |
+| `vylepseny_task_manager.py`     | Hlavní aplikace pro správu úkolů                 |
 | `test_vylepseny_task_manager.py`| Automatizované testy pomocí `pytest`             |
 | `requirements.txt`              | Seznam potřebných Python balíčků                 |
 
