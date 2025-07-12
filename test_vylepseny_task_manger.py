@@ -7,7 +7,6 @@ from vylepseny_task_manager import (
     pridat_ukol_do_db,
     aktualizovat_stav_ukolu,
     odstranit_ukol_z_db,
-    ukol_existuje,
 )
 
 def pripojeni_test_db():
