@@ -29,7 +29,6 @@ Součástí projektu jsou také automatizované testy pomocí knihovny `pytest`,
 
 ##  Databáze
 
-Projekt pracuje s **jedinou databází**:
 
 ###  Databáze: `spravce_ukolu`
 
@@ -37,6 +36,7 @@ Projekt pracuje s **jedinou databází**:
 - Tabulka `ukoly` se vytvoří automaticky při spuštění aplikace nebo testů.
 
 #### Vytvoření databáze:
+
 ```sql
 CREATE DATABASE spravce_ukolu;
 Struktura tabulky ukoly:
@@ -50,9 +50,14 @@ CREATE TABLE IF NOT EXISTS ukoly (
     datum_vytvoreni DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
- Spuštění aplikace
+```
 
-python vylepseny_task_manager.py
+##  Spuštění
+
+###  Naistalování knihoven: `pip install -r requirements.txt`
+
+
+###  Spuštění aplikace: `python vylepseny_task_manager.py`
 
 Po spuštění se zobrazí hlavní menu:
 
@@ -66,15 +71,13 @@ Odstranit úkol
 
 Ukončit aplikaci
 
-Spuštění testů
+###  Spuštění testů: `pytest test_vylepseny_task_manger.py`
+
 Testy ověřují funkce pro přidávání, aktualizaci a mazání úkolů v databázi.
 
-Spuštění:
-bash
-
-pytest test_vylepseny_task_manager.py
-
+ 
  Testované funkce
+ 
 pridat_ukol_do_db()
 Test na úspěšné přidání úkolu
  Pokus o nevalidní vložení bez názvu
@@ -92,7 +95,4 @@ ukol_existuje()
 
 Testy jsou izolované – při každém běhu se tabulka ukoly vyčistí (DELETE FROM ukoly), aby bylo prostředí vždy konzistentní.
 
- Requirements
-Instalace knihoven:
 
-pip install -r requirements.txt
