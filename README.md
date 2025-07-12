@@ -21,8 +21,7 @@ Součástí projektu jsou také automatizované testy pomocí knihovny `pytest`,
 ##  Použité technologie
 
 - Python 3.10+
-- MySQL (např. pomocí MySQL Workbench)
-- `mysql-connector-python`
+- MySQL 
 - `pytest`
 
 ---
@@ -61,36 +60,35 @@ CREATE TABLE IF NOT EXISTS ukoly (
 
 Po spuštění se zobrazí hlavní menu:
 
-Přidat úkol
+- Přidat úkol
 
-Zobrazit úkoly
+- Zobrazit úkoly
 
-Aktualizovat úkol
+- Aktualizovat úkol
 
-Odstranit úkol
+- Odstranit úkol
 
-Ukončit aplikaci
+- Ukončit aplikaci
 
 ###  Spuštění testů: `pytest test_vylepseny_task_manger.py`
 
 Testy ověřují funkce pro přidávání, aktualizaci a mazání úkolů v databázi.
 
- 
  Testované funkce
  
-pridat_ukol_do_db()
+- pridat_ukol_do_db()
 Test na úspěšné přidání úkolu
  Pokus o nevalidní vložení bez názvu
 
-aktualizovat_stav_ukolu()
+- aktualizovat_stav_ukolu()
 Test úspěšné změny stavu
 Pokus o aktualizaci neexistujícího úkolu
 
-odstranit_ukol_z_db()
+- odstranit_ukol_z_db()
 Test úspěšného odstranění úkolu
 Pokus o odstranění neexistujícího úkolu
 
-ukol_existuje()
+- ukol_existuje()
  Nepřímo testováno v rámci ostatních funkcí
 
 Testy jsou izolované – při každém běhu se tabulka ukoly vyčistí (DELETE FROM ukoly), aby bylo prostředí vždy konzistentní.
