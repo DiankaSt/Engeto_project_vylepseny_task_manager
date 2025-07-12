@@ -21,7 +21,8 @@ Součástí projektu jsou také automatizované testy pomocí knihovny `pytest`,
 ##  Použité technologie
 
 - Python 3.10+
-- MySQL 
+- MySQL
+- mysql.connector
 - `pytest`
 
 ---
